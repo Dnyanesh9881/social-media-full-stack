@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import Signup from '../components/Signup'
 import Login from '../components/Login';
+import { useSelector } from 'react-redux';
 
 const AuthPage = () => {
-    const [islogin, setIsLogin]=useState(false);
+    const {authState}=useSelector(state=>state.auth);
   return (
     <div>
         {
-islogin ? <Login setIsLogin={setIsLogin} isLogin={islogin}/> : <Signup setIsLogin={setIsLogin} isLogin={islogin}/>
+authState==="login" ? <Login /> : <Signup />
         }
         
     </div>

@@ -1,4 +1,4 @@
- import jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 
  const protectRoute=async(req, res, next)=>{
@@ -7,7 +7,7 @@ import User from "../models/userModel.js";
          let token= req.cookies.jwt;
          if(!token) res.status(400).json({error: "Unauthorized please login again"});
          let decoded= jwt.verify(token, process.env.SECRET_KEY);
-        //  console.log(decoded, token);
+
          const user=await User.findById(decoded.userId).select("-password");
          req.user=user;
          next();
@@ -18,3 +18,6 @@ import User from "../models/userModel.js";
  }
  
  export default protectRoute;
+
+
+ 

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import Actions from "./Actions";
 
-const Comment = ({username, comment, createdAt, avatar, likes}) => {
+const Comment = ({reply}) => {
     const [liked, setLiked]=useState(false);
   return (
     <>
@@ -11,23 +11,23 @@ const Comment = ({username, comment, createdAt, avatar, likes}) => {
       <Avatar
         size={"md"}
         name="john doe"
-        src={avatar}
+        src={reply.avatar}
         padding={"2px"}
       />
       <Flex flexDirection={"column"} w={"full"} gap={3}>
         <Flex justifyContent={"space-between"} w={"full"}>
-          <Text>{username}</Text>
+          <Text>{reply.username}</Text>
           <Flex alignItems={"center"} gap={3}>
-            <Text color={"#616161"}>{createdAt}</Text>
+            <Text color={"#616161"}>{reply.createdAt}</Text>
             <Box>
               <BsThreeDots />
             </Box>
           </Flex>
         </Flex>
-        <Text>{comment}</Text>
+        <Text>{reply.text}</Text>
         
-        <Actions liked={liked} setLiked={setLiked}/>
-        <Text color={"gray.light"}>{likes +(liked ? 1 : 0)}</Text>
+        {/* <Actions liked={liked} setLiked={setLiked}/> */}
+        {/* <Text color={"gray.light"}>{reply.likes.length +(liked ? 1 : 0)}</Text> */}
       </Flex>
 
     </Flex>
