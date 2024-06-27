@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import userRoutes from "./routers/userRoutes.js";
 import postRoutes from "./routers/postRoutes.js";
 import { v2 as cloudinary } from "cloudinary";
+import messageRoutes from "./routers/messageRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -24,6 +25,7 @@ app.use(cookieParser());
 
 app.use("/api/users", userRoutes);
 app.use("/api/post", postRoutes);
+app.use("/api/message", messageRoutes);
 
 
 
